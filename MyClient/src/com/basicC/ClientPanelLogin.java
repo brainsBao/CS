@@ -92,7 +92,7 @@ public class ClientPanelLogin extends JFrame {
 							FriendList fl=new FriendList();
 							dispose();
 						}else {
-							JOptionPane.showMessageDialog(null, "password and username is not null");
+							JOptionPane.showMessageDialog(null, "password and username is not right or NULL");
 						}
 					}
 				} catch (SQLException e1) {
@@ -103,6 +103,17 @@ public class ClientPanelLogin extends JFrame {
 				
 			}
 		});	
+		
+		jb_register.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				RegisterPanel rp=new RegisterPanel();
+			}
+		});
+		
+		
 		this.add(jl_username);
 		jl_username.setBounds(40,90,100,40);
 		this.add(jtf_username);
@@ -126,6 +137,7 @@ public class ClientPanelLogin extends JFrame {
 		this.setTitle("LOGIN");
 		this.setResizable(true);
 		this.setVisible(true);
+		this.setBackground(Color.blue);
 		
 	}
 	

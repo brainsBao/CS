@@ -29,7 +29,7 @@ public class test extends JFrame {
 		this.add(jpf);
 		jpf.setBounds(200, 0, 200, 300);
 		jpf.setSize(100, 40);
-		System.out.println(jpf.getText());
+		System.out.println(jpf.getPassword());
 		
 		jb.addActionListener(new ActionListener() {
 			

@@ -14,11 +14,12 @@ public class MyClient extends JFrame implements ActionListener{
 	
 	JPanel jp1,jp2,jp3;
 
-/*	public static void main(String[] args) {
+public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ClientPanelLogin CPL=new ClientPanelLogin();
+		//MyClient mc=new MyClient();
+		
 
-	}*/
+	}
 	
 	JTextField jtf=null;
 	JTextArea jta=null;

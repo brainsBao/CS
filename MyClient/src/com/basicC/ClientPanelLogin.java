@@ -1,26 +1,19 @@
 package com.basicC;
-import com.basicC.FriendList;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.nio.channels.NonReadableChannelException;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 import com.sqldata.sqlLogin;
-
-
-import javax.swing.*;
-import javax.swing.border.Border;
 
 public class ClientPanelLogin extends JFrame {
 	
@@ -74,8 +67,8 @@ public class ClientPanelLogin extends JFrame {
 
 				String username=jtf_username.getText();
 				String password=String.valueOf(jpf.getPassword());
-				
 				sqlLogin sl=new sqlLogin();
+				String[] adminInfo;
 				try {
 					ResultSet rs=sl.sqlLogin("select * from loginadmin");
 					while(rs.next()) {
@@ -85,23 +78,26 @@ public class ClientPanelLogin extends JFrame {
 						System.out.println(username1);
 						System.out.println(password1);
 						
-						if(e.getSource()==jb_login&&username.equals(username1)&&password.equals(password1)) {
-							//use database to valida login
-							
-							System.out.println(jpf.getPassword());
-							FriendList fl=new FriendList();
-							dispose();
-						}else {
-							JOptionPane.showMessageDialog(null, "password and username is not right or NULL");
-						}
+					
+					if(e.getSource()==jb_login&&username.equals(username1)&&password.equals(password1)) {
+						//use database to valida login
+						
+						System.out.println("password is right....");
+						FriendList fl=new FriendList();
+						dispose();
+						break;
+					}else {
+						JOptionPane.showMessageDialog(null, "password and username is not right or NULL");
 					}
+				}
+					rs.close();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
-				
 			}
+
 		});	
 		
 		jb_register.addActionListener(new ActionListener() {
@@ -109,7 +105,17 @@ public class ClientPanelLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				RegisterPanel rp=new RegisterPanel();
+
+
+				try {
+					new RegisterPanel();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	
+			
+				dispose();
 			}
 		});
 		
@@ -137,7 +143,7 @@ public class ClientPanelLogin extends JFrame {
 		this.setTitle("LOGIN");
 		this.setResizable(true);
 		this.setVisible(true);
-		this.setBackground(Color.blue);
+		this.setForeground(Color.blue);
 		
 	}
 	

@@ -6,10 +6,6 @@ import com.mysql.jdbc.ResultSetRow;
 
 public class sqlLogin {
 	
-/*	public static void main(String[] args) throws SQLException {
-		// TODO Auto-generated method stub
-		new sqlLogin();
-	}*/
 	
 	
 	static final String JDBC_Driver="com.mysql.jdbc.driver";
